@@ -2,17 +2,21 @@ import { Component } from 'react'
 
 class App extends Component {
   constructor(){
-    super();
-
+    super(); 
     this.state = {
-      name: 'Erick'
+      name: {firstName:'Erick', lastName:'Silva'}
     }
   }
   render() {
     return (
       <div className="App">
-        <p>Name: {this.state.name}</p>
-        <button>Change Name</button>
+        <p>Name: {this.state.name.firstName} {this.state.name.lastName}</p>
+        <button onClick={() => {
+          this.setState({name:{firstName:'Evelyn', lastName:'Fernandes'}})
+          }}
+        >
+          Change Name
+        </button>
       </div>
     );
   }
