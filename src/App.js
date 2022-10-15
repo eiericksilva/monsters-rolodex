@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import CardList from './components/card-list/card-list.component';
 
 class App extends Component {
   constructor(){
@@ -13,7 +14,6 @@ class App extends Component {
       .then((response) => response.json())
       .then((users) => this.setState(
         () => { return { monsters: users }},
-        () => { console.log(this.state)}
       ))
   }
   onSearchChange =  (event) => {
@@ -40,16 +40,9 @@ class App extends Component {
           className='search-box'
           type='search' 
           placeholder='search monsters' 
-          onChange={onSearchChange}/>
-        {
-          filteredMonsters.map((monster) => {
-            return(
-              <div key={monster.id}>
-                <h1>{monster.name}</h1>
-              </div>
-            )
-          })
-        }
+          onChange={onSearchChange}
+        />
+        <CardList monsters={filteredMonsters}/>
       </div>
     );
   }
